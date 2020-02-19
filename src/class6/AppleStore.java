@@ -2,17 +2,17 @@ package class6;
 
 public interface AppleStore { // 创建 AppleStore 接口
 
-	public iPhone buyPhone(); // 接口方法
+	public iPhone buyPhone(); // 接口方法，默认 abstract
 
-	public void returnPhone(iPhone phone); //接口方法
+	public void returnPhone(iPhone phone); //接口方法，默认 abstract
 
-	public int getNumberOfPhones(); //接口方法
+	public int getNumberOfPhones(); //接口方法，默认 abstract
 
-	public void addPhones(int numberOfPhones); // 接口方法
+	public void addPhones(int numberOfPhones); // 接口方法，默认 abstract
 
-	public int getTotalSales(); //接口方法
+	public int getTotalSales(); //接口方法，默认 abstract
 
-	public default iPhone makePhone(int i) { // 在 interface 直接编写 implement 方法，Java8 新特性 ？？
+	public default iPhone makePhone(int i) { // default, 在 interface 直接编写 implement 方法，Java8 新特性 ？？
 		return iPhone.makePhone(i);
 	}
 }
@@ -55,6 +55,6 @@ class iPhone implements Comparable<iPhone> {
 	@Override
 	public int compareTo(iPhone o) { // 重写 compareTo 方法
 		// return this.number.compareTo(o.number);
-		return Integer.parseInt(number) - Integer.parseInt(o.number);
+		return Integer.parseInt(number) - Integer.parseInt(o.number); // parseInt(String) return int;
 	}
 }
