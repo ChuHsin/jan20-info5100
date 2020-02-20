@@ -49,7 +49,7 @@ class iPhone implements Comparable<iPhone> {
 	}
 
 	public String toString() { // 重写 toString
-		return "[Number,Price]=[" + n umber + "," + price + "]";
+		return "[Number,Price]=[" + number + "," + price + "]";
 	}
 
 	@Override
