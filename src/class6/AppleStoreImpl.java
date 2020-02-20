@@ -2,11 +2,11 @@ package class6;
 
 public class AppleStoreImpl implements AppleStore {
 
-	private iPhone[] phones = new iPhone[3];
-	private float saleAmount = 0;
+	private iPhone[] phones = new iPhone[3]; // 创建指定大小 3 的 array
+	private float saleAmount = 0; // 初始化 saleAmount 0
 
 	AppleStoreImpl() {
-		init();
+		init(); // 构造方法
 	}
 
 	private void init() {
@@ -14,7 +14,7 @@ public class AppleStoreImpl implements AppleStore {
 			iPhone p = makePhone(i);
 			phones[i] = p;
 		}
-
+// 创造phones长度个数个 phone, 并把它们保存在 array 定义的 index 上
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class AppleStoreImpl implements AppleStore {
 		for (int i = 0; i < phones.length; i++) {
 			iPhone p = phones[i];
 			if (p != null) {
-				saleAmount += p.price;
+				saleAmount += p.price; // saleAmount = p.price + saleAmount
 				phones[i] = null;
 				return p;
 			}
