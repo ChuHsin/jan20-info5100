@@ -7,10 +7,10 @@ public class iPhoneBusiness {
 	public static void main(String[] args) {
 		// AppleStore as = new AppleStoreImpl();
 		AppleStore as = new AppleStoreArrayListImpl();
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); // System.in object 
 		while (true) {
 			System.out.println("Please Type(BUY,RETURN,SALES,COUNT,STOCK,QUIT,PRINT) for your operation");
-			String line = scanner.nextLine();
+			String line = scanner.nextLine(); // scanner 类，用于 得到输入的 argument
 			if (line.equals("QUIT")) {
 				break;
 			}
@@ -55,7 +55,7 @@ public class iPhoneBusiness {
 	private static iPhone makePhone() {
 		iPhone p = new iPhone();
 		p.price = 1099;
-		p.number = (int) (Math.random() * 100) + "";
+		p.number = (int) (Math.random() * 100) + ""; // randomly creat key value of phone
 		return p;
 	}
 
