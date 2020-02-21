@@ -1,14 +1,19 @@
 package class5;
 
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
+import java.text.NumberFormat; // 
+import java.text.SimpleDateFormat; // 
 
 public class Professor {
-
+// throw 一般用于程序出现“某种逻辑”（if判断）时，程序员主动抛出某种特定类型的异常
+// throws 方法可能抛出的异常的声明，当某个方法可能会抛出某种异常时用 throws 声明可能抛出的异常，然后交给上层调用它的方法程序处理
+// Exception 是所有异常类的父类， catch 必须抓住 Exception 的子类
+// finally 表示不管异常是否发生，都得进行 finally {} 中的处理
+// 某个函数或某段程序块不管会不会，有没有可能抛出异常，都可以加 try{...} catch{ ...} 去捕捉它；
+// 自定义异常：新建一个异常类，让其继承 Exception 类 或 Exception 的某个子类， 然后用 throws 抛出自己定义的异常类对象
 	public static void main(String args[]) throws ProjectorException {
-
 		Professor siva = new Professor();
-		try {
+		// try catch, 
+		try { 
 			System.out.println("Before writing code");
 			siva.writeCode();
 			System.out.println("After writing code");
@@ -30,13 +35,13 @@ public class Professor {
 		System.out.println("Finally Done..");
 	}
 
-	public void writeCode() throws ProjectorException, BatteryLowException {
+	public void writeCode() throws ProjectorException, BatteryLowException { // a method can throw more than one exception
 		openLaptop();
 		connectProjectorCableToLaptop();
 		turnOnTheProjector();
 		makeScreenVisible();
 		try {
-			// makeScreenVisible();
+			// makeScreenVisible(); // 运行这一段代码，当发生 Exception e 时捕捉到，并运行 catch 中的代码
 		} catch (Exception e) {
 			System.out.println("*****Screen Exception --- Pull the screen manually with your hand");
 		}
@@ -55,23 +60,23 @@ public class Professor {
 
 	}
 
-	private void makeScreenVisible() throws RuntimeException {
+	private void makeScreenVisible() throws RuntimeException { // 声明这个 method 可能会抛出 RuntimeException 并交由调用它的method 来
 		int x = Util.getRandomNumber(10);
 		if (x < 9) {
-			throw new RuntimeException();
+			throw new RuntimeException(); // if x < 9, throw the RuntimeException
 		}
 		System.out.println("Make Screen visible");
 
 	}
 
-	private void turnOnTheProjector() throws ProjectorException {
+	private void turnOnTheProjector() throws ProjectorException { // 声明该 method 可能抛出 ProjectorException 类 异常
 		System.out.println("Turn on projector");
 		int x = Util.getRandomNumber(10);
 		System.out.println("Random number -> " + x);
 		if (x < 1) {
 			// RuntimeException exception = new RuntimeException();
-			ProjectorException exception = new ProjectorException();
-			throw exception;
+			ProjectorException exception = new ProjectorException(); // 自定义 异常
+			throw exception; // 抛出 自定义异常 exception
 		} else {
 			System.out.println("Projector confirms that content from laptop is shown on screen");
 		}
@@ -82,14 +87,14 @@ public class Professor {
 		System.out.println("Connect Projector cable to Laptop");
 	}
 
-	private void openLaptop() throws BatteryLowException {
+	private void openLaptop() throws BatteryLowException { // 声明该 method 可能抛出 BatteryLowException
 		System.out.println("Open Laptop");
 		System.out.println("Checking the battery");
 		int x = Util.getRandomNumber(10);
 		System.out.println("Battery random -> " + x);
 		if (x < 1) {
 			// throw new RuntimeException("Battery is low");
-			throw new BatteryLowException();
+			throw new BatteryLowException(); // 当 x<1 实现时， 抛出 BatteryLowException
 		} else {
 			System.out.println("Battery is sufficient..");
 		}
@@ -98,11 +103,11 @@ public class Professor {
 
 }
 
-class BatteryLowException extends RuntimeException {
+class BatteryLowException extends RuntimeException { // 声明 自定义 Exception，它需要继承 Exception类 或者它的子类
 
 }
 
-class ProjectorException extends Exception {
+class ProjectorException extends Exception { // 声明 自定义 Exception，它需要继承 Exception类 或者它的子类
 }
 
 class Util {
