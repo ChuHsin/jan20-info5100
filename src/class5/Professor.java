@@ -15,27 +15,30 @@ public class Professor {
 		// try catch, 
 		try { 
 			System.out.println("Before writing code");
-			siva.writeCode();
+			siva.writeCode(); //可能会抛出 Battery 和 Projector
 			System.out.println("After writing code");
-		} catch (ProjectorException pe) {
+		} catch (ProjectorException pe) { // 如果 catch 到 Projector， 运行以下代码
 			System.out.println("******ProjectorException***** Siva is trying other options to write code..");
-		} catch (BatteryLowException be) {
+		} catch (BatteryLowException be) { // 如果 catch 到 Battery， 运行以下代码
 			System.out.println("****BatteryLowException****** Please connect power cable");
-		} catch (RuntimeException e) {
-			String message = e.getMessage();
-			if (message.contains("Battery")) {
-				System.out.println("Please connect power cable");
+		} catch (RuntimeException e) { // 如果 catch 到 其他 RuntimeException 类的 exception， 进行以下流程
+			String message = e.getMessage(); // 获取这个 Exception 的 Message
+			if (message.contains("Battery")) { // 如果这个 message 中含有 “Battery”
+				System.out.println("Please connect power cable"); // Battery 相关内容
 			} else {
-				System.out.println("Siva is trying other options to write code..");
+				System.out.println("Siva is trying other options to write code.."); // 否则尝试其他方法
 			}
 		} finally {
 			System.out.println("I will get executed irrespective of having an exception or not..");
+			// 不管是否 catch 到任何 Exception， 最后都会进行这一步
 		}
 
 		System.out.println("Finally Done..");
 	}
 
 	public void writeCode() throws ProjectorException, BatteryLowException { // a method can throw more than one exception
+		// 这个 method 可能会抛出 ProjectorException 和 BatteryLowException
+		openLaptop();
 		openLaptop();
 		connectProjectorCableToLaptop();
 		turnOnTheProjector();
@@ -52,7 +55,6 @@ public class Professor {
 
 	private void projectorEmitTextOnScreen() {
 		System.out.println("Project emits text on to screen");
-
 	}
 
 	private void typeOnLaptop() {
