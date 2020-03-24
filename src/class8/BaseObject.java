@@ -1,5 +1,5 @@
 package class8;
-
+// 描述基本动作， loop, loop with random exception
 public class BaseObject {
 
 	public void loop(String message) {
