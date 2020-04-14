@@ -1,0 +1,3 @@
+This is the place writing some good news about the learning in using Git
+This is the test for change row
+The end of editing.
